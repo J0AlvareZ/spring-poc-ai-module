@@ -38,3 +38,5 @@ build/
 
 ### NODE
 node_modules/**
+
+*-local.*

@@ -14,7 +14,7 @@ import org.springframework.http.converter.json.MappingJackson2HttpMessageConvert
 @Configuration
 public class GlobalConfig {
 
-    private static final String BASE_PACKAGE = "com.joalvarez";
+    public static final String BASE_PACKAGE = "com.joalvarez";
 
     @Autowired
     public void objectMapperConfiguration(ObjectMapper mapper) {
@@ -28,7 +28,7 @@ public class GlobalConfig {
     @Bean
     public MappingJackson2HttpMessageConverter mappingJacksonHttpMessageConverter(
             ObjectMapper objectMapper) {
-        MappingJackson2HttpMessageConverter converter = new MappingJackson2HttpMessageConverter();
+        final MappingJackson2HttpMessageConverter converter = new MappingJackson2HttpMessageConverter();
         converter.setObjectMapper(objectMapper);
 
         return converter;

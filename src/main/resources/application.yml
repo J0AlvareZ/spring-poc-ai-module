@@ -4,16 +4,16 @@ spring:
 
   liquibase:
     change-log: classpath:database/liquibase-changelog.yml
-    url: \${DATABASE_URL:jdbc:postgresql://localhost:5432/spring-poc-ai-module}
-    user: \${DATABASE_USERNAME:postgres}
-    password: \${DATABASE_PASSWORD:postgres}
+    url: ${DATABASE_URL:jdbc:postgresql://localhost:5432/spring-poc-ai-module}
+    user: ${DATABASE_USERNAME:postgres}
+    password: ${DATABASE_PASSWORD:postgres}
     enabled: false
 
   datasource:
     driver-class-name: org.postgresql.Driver
-    url: \${DATABASE_URL:jdbc:postgresql://localhost:5432/spring-poc-ai-module}
-    username: \${DATABASE_USERNAME:postgres}
-    password: \${DATABASE_PASSWORD:postgres}
+    url: ${DATABASE_URL:jdbc:postgresql://localhost:5432/spring-poc-ai-module}
+    username: ${DATABASE_USERNAME:postgres}
+    password: ${DATABASE_PASSWORD:postgres}
 
   jpa:
     hibernate:
@@ -33,15 +33,25 @@ spring:
     ansi:
       enabled: always
 
+  ai:
+    openai:
+      api-key: ${OPENROUTER_API_KEY}
+      base-url: https://openrouter.ai/api
+      chat:
+        completions-path: /v1/chat/completions
+        options:
+          model: openai/gpt-4o-mini
+          temperature: 0.7
+
 app:
-  version: ${version}
-  name: \${spring.application.name}
-  description: ${description}
+  version: @version@
+  name: ${spring.application.name}
+  description: @description@
 
 server:
   port: 8090
   servlet:
-    context-path: \${CONTEXT_PATH:/}
+    context-path: ${CONTEXT_PATH:/}
 
 springdoc:
   swagger-ui:

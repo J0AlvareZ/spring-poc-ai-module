@@ -18,13 +18,13 @@ public class OpenAPIConfig {
 
     @Bean
     public OpenAPI api() {
-        License license = new License()
+        final License license = new License()
                 .name("license")
                 .url("licenseUrl");
 
-        Contact contact = new Contact();
+        final Contact contact = new Contact();
 
-        Info info = new Info()
+        final Info info = new Info()
                 .title(this.properties.name())
                 .description(this.properties.description())
                 .contact(contact)

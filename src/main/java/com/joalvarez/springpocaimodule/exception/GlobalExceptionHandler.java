@@ -27,12 +27,16 @@ public class GlobalExceptionHandler {
     public ResponseEntity<ResponseDTO> handleValidationExceptions(MethodArgumentNotValidException e) throws JsonProcessingException {
         final Stream<ObjectError> errors = e.getBindingResult().getAllErrors().stream().filter(FieldError.class::isInstance);
 
-        final JsonNode details = this.mapper.readTree(
-                this.mapper.writeValueAsString(errors.map(FieldError.class::cast)
-                        .map(
-                                (error) -> String.format("The field {} is invalid for the value {} with the following cause: %s", error.getField(), error.getRejectedValue(), error.getDefaultMessage())
-                        )
-                        .toList()));
+		final JsonNode details = this.mapper.readTree(
+			this.mapper.writeValueAsString(errors.map(FieldError.class::cast)
+				.map(
+					(error) -> String.format(
+						"The field %s is invalid for the value %s with the following cause: %s",
+						error.getField(),
+						error.getRejectedValue(),
+						error.getDefaultMessage())
+				)
+				.toList()));
 
         return ResponseEntity
                 .badRequest()

@@ -48,6 +48,9 @@ app:
   name: ${spring.application.name}
   description: @description@
 
+  ai:
+    system-prompt-resource: classpath:prompts/system-prompt.txt
+
 server:
   port: 8090
   servlet:

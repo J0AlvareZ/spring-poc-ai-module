@@ -10,8 +10,8 @@
   "subjectmaxlength": 100,
   "types": [
     {
-      "emoji": "✨",
-      "code": ":sparkles:",
+      "emoji": "🧩",
+      "code": ":jigsaw:",
       "description": "Introduce new features.",
       "name": "feat"
     },

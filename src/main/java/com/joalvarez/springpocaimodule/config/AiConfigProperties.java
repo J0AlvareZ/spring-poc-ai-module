@@ -6,13 +6,13 @@ import org.springframework.core.io.Resource;
 @ConfigurationProperties(prefix = "app.ai")
 public class AiConfigProperties {
 
-	private Resource systemPromptResource;
+	private Resource systemPrompt;
 
-	public Resource getSystemPromptResource() {
-		return systemPromptResource;
+	public Resource getSystemPrompt() {
+		return systemPrompt;
 	}
 
-	public void setSystemPromptResource(Resource systemPromptResource) {
-		this.systemPromptResource = systemPromptResource;
+	public void setSystemPrompt(Resource systemPrompt) {
+		this.systemPrompt = systemPrompt;
 	}
 }

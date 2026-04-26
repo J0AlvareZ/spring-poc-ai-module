@@ -49,7 +49,7 @@ app:
   description: @description@
 
   ai:
-    system-prompt-resource: classpath:prompts/system-prompt.txt
+    system-prompt: classpath:prompts/system-prompt.txt
 
 server:
   port: 8090

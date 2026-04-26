@@ -22,8 +22,8 @@
       "name": "fix"
     },
     {
-      "emoji": "📚",
-      "code": ":books:",
+      "emoji": "📖",
+      "code": ":book:",
       "description": "Documentation change.",
       "name": "docs"
     },

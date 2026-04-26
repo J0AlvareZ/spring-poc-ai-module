@@ -1,0 +1,64 @@
+---
+#
+# This is the canonical configuration for the `README.md`
+# Run `make readme` to rebuild the `README.md`
+#
+
+# Name of this project
+name: api-gastronomix
+
+# Tags of this project
+tags:
+  - library
+  - java
+
+email:
+  support: afrancioli@infosis.tech
+
+# Logo for this project
+logo: docs/diagrams/components.png
+
+# License of this project
+license: "LGPL-3.0"
+
+# Canonical GitLab repo
+gitlab_host: gitlab.infosisglobal.com
+gitlab_repo: gastronomix/api-gastronomix
+
+# Badges to display
+badges:
+  - name: pipeline status
+    image: https://gitlab.infosisglobal.com/gastronomix/api-gastronomix/badges/main/pipeline.svg
+    url: https://gitlab.infosisglobal.com/gastronomix/api-gastronomix/-/commits/main
+  - name: pre-commit
+    image: https://img.shields.io/badge/pre--commit-enabled-brightgreen?logo=pre-commit&logoColor=white
+    url: https://github.com/pre-commit/pre-commit
+  - name: Code style black
+    image: https://img.shields.io/badge/code%20style-black-000000.svg
+    url: https://github.com/psf/black
+  - name: Conventional Commits
+    image: https://img.shields.io/badge/Conventional%20Commits-1.0.0-yellow
+    url: https://conventionalcommits.org
+  - name: KeepAChangelog
+    image: https://img.shields.io/badge/changelog-Keep%20a%20Changelog%20v1.0.0-orange
+    url: https://keepachangelog.com
+
+# Short description of this project
+description: |-
+  description api sample
+
+requirements: |-
+
+  This is a list of requirements that need to be installed previously to enjoy all the goodies of this configuration:
+
+  - [gomplate](https://github.com/hairyhenderson/gomplate)
+  - [Docker](https://www.docker.com)
+  - [python](https://www.python.org)
+  - [taskfile](https://github.com/go-task/task)
+
+# How to use this project
+usages:
+  - docs/usage.md
+
+examples:
+  - "docs/examples/common.md"

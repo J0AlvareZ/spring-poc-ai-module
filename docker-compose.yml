@@ -1,0 +1,28 @@
+services:
+
+  spring-poc-ai-module-database:
+    image: postgres:15.6
+    container_name: spring-poc-ai-module-database
+    ports:
+      - '5432:5432'
+    environment:
+      - POSTGRES_USER=${DATABASE_USERNAME}
+      - POSTGRES_PASSWORD=${DATABASE_PASSWORD}
+      - POSTGRES_DB=${DATABASE_NAME}
+    volumes:
+      - pg-data:/var/lib/postgresql/data
+    networks:
+      - spring-poc-ai-module-database-network
+    restart: always
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U ${DATABASE_USERNAME}"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+
+volumes:
+  pg-data:
+    driver: local
+
+networks:
+  spring-poc-ai-module-database-network:

@@ -1,0 +1,53 @@
+---
+version: "3"
+
+vars:
+  NODE_PKG_MANAGER: bun
+  GRADLE: ./gradlew
+  DOCKER_USER: joalvarezdev
+
+tasks:
+
+  node:
+    desc: install node dependencies
+    preconditions:
+      - sh: 'command -v {{.NODE_PKG_MANAGER}}'
+        msg: "{{.NODE_PKG_MANAGER}} is not installed. Install it or change NODE_PKG_MANAGER in the Taskfile."
+    cmds:
+      - "{{.NODE_PKG_MANAGER}} install"
+
+  entity:
+    desc: create class hbs
+    deps: [node]
+    cmds:
+      - "{{.NODE_PKG_MANAGER}} run plop"
+
+  build:
+    desc: build application
+    cmds:
+      - "{{.GRADLE}} clean build"
+
+  docker-build:
+    desc: build docker image
+    deps: [build]
+    preconditions:
+      - sh: '[ -n "{{.APP_NAME}}" ]'
+        msg: "APP_NAME is not configured"
+    cmds:
+      - docker build -t {{.DOCKER_USER}}/{{.APP_NAME}}:latest --build-arg ARTIFACT_NAME={{.APP_NAME}}.jar .
+
+  docker-push:
+    desc: push docker image to registry
+    deps: [docker-build]
+    preconditions:
+      - sh: '[ -n "{{.APP_NAME}}" ]'
+        msg: "APP_NAME is not configured"
+    cmds:
+      - docker push {{.DOCKER_USER}}/{{.APP_NAME}}:latest
+
+  docker-deploy:
+    desc: build and push docker image
+    deps: [docker-push]
+    preconditions:
+      - sh: '[ -n "{{.APP_NAME}}" ]'
+        msg: "APP_NAME is not configured"
